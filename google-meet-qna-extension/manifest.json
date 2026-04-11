@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Meet Q&A Extractor",
+  "version": "1.0",
+  "description": "Continuously reads Google Meet chat and extracts questions to an easy-to-read list.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://meet.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "View Questions"
+  }
+}
