@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini News Aggregator",
+  "version": "1.0",
+  "description": "Intelligently aggregates the top 5 global news stories using Gemini AI.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.bbci.co.uk/*",
+    "https://*.reuters.com/*",
+    "https://*.reutersagency.com/*",
+    "https://*.aljazeera.com/*",
+    "https://*.cnn.com/*",
+    "https://*.theguardian.com/*",
+    "https://*.npr.org/*",
+    "https://*.sky.com/*",
+    "https://*.france24.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon128.png"
+  },
+  "icons": {
+    "16": "icon128.png",
+    "48": "icon128.png",
+    "128": "icon128.png"
+  }
+}
