@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini AI Agent",
+  "version": "1.0",
+  "description": "A smart AI agent powered by Google Gemini with multi-step reasoning capabilities.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icons/icon.png"
+    }
+  },
+  "icons": {
+    "128": "icons/icon.png"
+  },
+  "permissions": [
+    "storage"
+  ]
+}

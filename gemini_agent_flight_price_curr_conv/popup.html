@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini Agent</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="settings-view" class="view hidden">
+    <div class="settings-content">
+      <h2>Agent Setup</h2>
+      <p>Please enter your Gemini API Key to continue.</p>
+      <input type="password" id="api-key-input" placeholder="GEMINI_API_KEY">
+      <button id="save-key-btn" class="glow-btn">Save Key</button>
+      <div id="settings-error" class="error hidden"></div>
+    </div>
+  </div>
+
+  <div id="chat-view" class="view">
+    <header>
+      <div class="header-content">
+        <img src="icons/icon.png" alt="Logo" class="logo">
+        <h1>Gemini Agent</h1>
+      </div>
+      <button id="settings-btn" title="Settings">⚙️</button>
+    </header>
+
+    <div id="chat-history">
+      <div class="message system-msg">Agent memory initialized. You can now ask questions.</div>
+    </div>
+
+    <div class="input-area">
+      <input type="text" id="query-input" placeholder="Ask anything... (e.g., flight prices)">
+      <button id="send-btn" class="glow-btn">Send</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
