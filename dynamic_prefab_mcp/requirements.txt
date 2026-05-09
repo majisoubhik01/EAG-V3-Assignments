@@ -1,0 +1,6 @@
+fastmcp
+prefab-ui
+requests
+beautifulsoup4
+google-genai
+python-dotenv
