@@ -1,0 +1,45 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# SQLite databases
+*.db
+*.sqlite3
+
+# ── Python ─────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[oc]
+*.pyo
+*.pyd
+build/
+dist/
+wheels/
+*.egg-info/
+.eggs/
+
+# ── Virtual environments ────────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+
+# ── Usage tracking ─────────────────────────────────────────────────────────────
+usage.json
+
+# ── uv ─────────────────────────────────────────────────────────────────────────
+# uv.lock is committed so installs are reproducible
+# .python-version is committed so uv picks the right interpreter
+
+# ── IDE / OS ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Test / coverage artefacts ──────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/

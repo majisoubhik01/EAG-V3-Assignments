@@ -1,0 +1,7 @@
+pydantic>=2
+mcp
+tavily-python
+ddgs
+crawl4ai
+python-dotenv
+httpx
