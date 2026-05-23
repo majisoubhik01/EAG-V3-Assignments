@@ -1,0 +1,33 @@
+# ── Environment & Secrets ─────────────────────────────
+.env
+
+# ── Python ────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# ── Database ──────────────────────────────────────────
+llm_gatewayV2/gateway_v2.db
+*.db
+*.sqlite3
+
+# ── Node / npm ────────────────────────────────────────
+node_modules/
+npm-debug.log*
+
+# ── OS ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE ───────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo

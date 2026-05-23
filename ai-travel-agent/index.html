@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voyager AI — Agentic Travel Planning Assistant</title>
+  <meta name="description" content="Voyager AI is an agentic AI travel planning assistant that reasons step-by-step to build complete, budget-aware travel itineraries. Powered by transparent tool calls and structured reasoning." />
+  <meta name="keywords" content="AI travel planner, itinerary generator, trip planning, travel agent AI, budget travel" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Voyager AI — Agentic Travel Planning Assistant" />
+  <meta property="og:description" content="Watch AI reason through your perfect trip step-by-step." />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon inline SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✈️</text></svg>" />
+</head>
+<body>
+
+  <!-- Aurora ambient background -->
+  <div class="aurora-bg" aria-hidden="true"></div>
+
+  <!-- ─── Hero Header ─────────────────────────────────────── -->
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <div class="hero-title-group">
+        <div class="hero-badge">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Agentic AI · Reasoning-First
+        </div>
+        <h1>Voyager AI<br>Travel Planner</h1>
+        <p class="hero-subtitle">
+          Your AI travel agent that thinks out loud — breaking down every trip into transparent reasoning steps, live tool calls, and verified budget analysis.
+        </p>
+      </div>
+      <div class="hero-stats" aria-label="Platform statistics">
+        <div class="hero-stat">
+          <div class="hero-stat-num">8+</div>
+          <div class="hero-stat-label">Destinations</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">11</div>
+          <div class="hero-stat-label">Agent Tools</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">12</div>
+          <div class="hero-stat-label">Reasoning Steps</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Transparent</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Main App Layout ─────────────────────────────────── -->
+  <main class="app-layout" role="main">
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- LEFT PANEL — Trip Configuration Form               -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <aside class="left-panel" aria-label="Trip configuration">
+
+      <!-- Quick Examples -->
+      <div class="card" id="examples-card">
+        <div class="card-header">
+          <div class="card-header-icon" aria-hidden="true">✨</div>
+          <div>
+            <div class="card-title">Quick Start</div>
+            <div class="card-subtitle">Try a sample itinerary</div>
+          </div>
+        </div>
+        <div class="card-body" style="padding-top:12px">
+          <div class="examples-grid" role="list">
+
+            <button class="example-btn" id="example-tokyo" role="listitem"
+              data-dest="Tokyo" data-budget="2500" data-prefs="food,culture" data-nights="5"
+              aria-label="Load Tokyo anime and food example">
+              <span class="example-icon" aria-hidden="true">🇯🇵</span>
+              <div class="example-info">
+                <div class="example-title">Tokyo · Anime & Food</div>
+                <div class="example-meta">$2,500 · 5 nights · Economy</div>
+              </div>
+            </button>
+
+            <button class="example-btn" id="example-paris" role="listitem"
+              data-dest="Paris" data-budget="3500" data-prefs="culture,food" data-nights="6"
+              aria-label="Load Paris culture and cuisine example">
+              <span class="example-icon" aria-hidden="true">🇫🇷</span>
+              <div class="example-info">
+                <div class="example-title">Paris · Culture & Cuisine</div>
+                <div class="example-meta">$3,500 · 6 nights · Economy</div>
+              </div>
+            </button>
+
+            <button class="example-btn" id="example-bali" role="listitem"
+              data-dest="Bali" data-budget="1800" data-prefs="adventure,wellness" data-nights="7"
+              aria-label="Load Bali adventure example">
+              <span class="example-icon" aria-hidden="true">🇮🇩</span>
+              <div class="example-info">
+                <div class="example-title">Bali · Adventure & Wellness</div>
+                <div class="example-meta">$1,800 · 7 nights · Budget</div>
+              </div>
+            </button>
+
+            <button class="example-btn" id="example-dubai" role="listitem"
+              data-dest="Dubai" data-budget="5000" data-prefs="luxury,sightseeing" data-nights="5"
+              aria-label="Load Dubai luxury example">
+              <span class="example-icon" aria-hidden="true">🇦🇪</span>
+              <div class="example-info">
+                <div class="example-title">Dubai · Luxury Escape</div>
+                <div class="example-meta">$5,000 · 5 nights · Business</div>
+              </div>
+            </button>
+
+            <button class="example-btn" id="example-rome" role="listitem"
+              data-dest="Rome" data-budget="2800" data-prefs="culture,food" data-nights="5"
+              aria-label="Load Rome history and pasta example">
+              <span class="example-icon" aria-hidden="true">🇮🇹</span>
+              <div class="example-info">
+                <div class="example-title">Rome · History & Pasta</div>
+                <div class="example-meta">$2,800 · 5 nights · Economy</div>
+              </div>
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Trip Form -->
+      <div class="card" id="form-card">
+        <div class="card-header">
+          <div class="card-header-icon" aria-hidden="true">🗺️</div>
+          <div>
+            <div class="card-title">Trip Parameters</div>
+            <div class="card-subtitle">Configure your journey</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form id="trip-form" novalidate>
+
+            <!-- Destination -->
+            <div class="form-group">
+              <label class="form-label" for="destination">Destination</label>
+              <input
+                id="destination"
+                type="text"
+                class="form-input"
+                placeholder="e.g. Tokyo, Paris, Bali, Rome…"
+                autocomplete="off"
+                required
+                aria-required="true"
+                aria-describedby="destination-hint"
+              />
+              <span id="destination-hint" style="font-size:11px;color:var(--text-muted);display:block;margin-top:5px;">
+                Try: Tokyo · Paris · Bali · Rome · Dubai · Barcelona · Sydney
+              </span>
+            </div>
+
+            <!-- Origin & Travel Class -->
+            <div class="form-group">
+              <label class="form-label" for="origin">Flying From (Region)</label>
+              <select id="origin" class="form-select" aria-label="Select origin region">
+                <option value="US">🇺🇸 United States</option>
+                <option value="UK">🇬🇧 United Kingdom</option>
+                <option value="IN">🇮🇳 India</option>
+                <option value="AU">🇦🇺 Australia</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="travel-class">Travel Class</label>
+              <select id="travel-class" class="form-select" aria-label="Select travel class">
+                <option value="economy">Economy</option>
+                <option value="business">Business</option>
+              </select>
+            </div>
+
+            <!-- Dates -->
+            <div class="form-group">
+              <label class="form-label">Travel Dates</label>
+              <div class="date-row">
+                <div>
+                  <input id="start-date" type="date" class="form-input" aria-label="Departure date" required />
+                </div>
+                <div>
+                  <input id="end-date" type="date" class="form-input" aria-label="Return date" required />
+                </div>
+              </div>
+            </div>
+
+            <!-- Hotel Category -->
+            <div class="form-group">
+              <label class="form-label" for="hotel-category">Hotel Category</label>
+              <select id="hotel-category" class="form-select" aria-label="Select hotel category">
+                <option value="budget">🛏️ Budget (Hostels & 3★)</option>
+                <option value="midrange" selected>🏨 Mid-range (4★)</option>
+                <option value="luxury">🌟 Luxury (5★)</option>
+              </select>
+            </div>
+
+            <!-- Budget Slider -->
+            <div class="form-group">
+              <label class="form-label" for="budget-slider">Total Budget (USD)</label>
+              <div class="budget-display-row">
+                <span id="budget-display" aria-live="polite">$2,500</span>
+                <div class="budget-refine" role="group" aria-label="Budget adjustment">
+                  <button type="button" class="refine-btn" data-action="budget-down"
+                    id="budget-down-btn" aria-label="Decrease budget by $500">−</button>
+                  <button type="button" class="refine-btn" data-action="budget-up"
+                    id="budget-up-btn" aria-label="Increase budget by $500">+</button>
+                </div>
+              </div>
+              <input
+                id="budget-slider"
+                type="range"
+                min="500"
+                max="20000"
+                step="100"
+                value="2500"
+                aria-label="Budget slider"
+              />
+              <div style="display:flex;justify-content:space-between;margin-top:5px">
+                <span style="font-size:10px;color:var(--text-muted)">$500</span>
+                <span style="font-size:10px;color:var(--text-muted)">$20,000</span>
+              </div>
+            </div>
+
+            <!-- Preferences -->
+            <div class="form-group">
+              <label class="form-label" id="prefs-label">Travel Preferences</label>
+              <div class="pref-chips" role="group" aria-labelledby="prefs-label">
+                <button type="button" class="pref-chip selected" data-pref="food" id="pref-food" aria-pressed="true">🍜 Food</button>
+                <button type="button" class="pref-chip" data-pref="culture" id="pref-culture" aria-pressed="false">🏛️ Culture</button>
+                <button type="button" class="pref-chip" data-pref="adventure" id="pref-adventure" aria-pressed="false">⛰️ Adventure</button>
+                <button type="button" class="pref-chip" data-pref="nature" id="pref-nature" aria-pressed="false">🌿 Nature</button>
+                <button type="button" class="pref-chip" data-pref="sightseeing" id="pref-sightseeing" aria-pressed="false">📸 Sightseeing</button>
+                <button type="button" class="pref-chip" data-pref="luxury" id="pref-luxury" aria-pressed="false">✨ Luxury</button>
+                <button type="button" class="pref-chip" data-pref="wellness" id="pref-wellness" aria-pressed="false">🧘 Wellness</button>
+                <button type="button" class="pref-chip" data-pref="shopping" id="pref-shopping" aria-pressed="false">🛍️ Shopping</button>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn" id="run-btn" aria-live="polite">
+              <span aria-hidden="true">✈️</span>
+              Plan My Trip
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Confidence Meter (visible after run) -->
+      <div class="confidence-panel card" id="conf-panel" style="display:flex;padding:0">
+        <div class="card-body" style="width:100%">
+          <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+            <div class="conf-icon" aria-hidden="true">🎯</div>
+            <div class="conf-info">
+              <div class="conf-label">Confidence Score</div>
+              <div id="conf-score" aria-live="polite">—</div>
+              <div class="conf-bar" role="progressbar" aria-labelledby="conf-score">
+                <div id="conf-bar-inner"></div>
+              </div>
+            </div>
+          </div>
+          <div class="conf-summary-cards" style="margin-top:16px">
+            <div class="conf-card">
+              <div class="conf-card-label">✈️ Flight</div>
+              <div class="conf-card-val" id="conf-flight">—</div>
+            </div>
+            <div class="conf-card">
+              <div class="conf-card-label">🏨 Hotel</div>
+              <div class="conf-card-val" id="conf-hotel">—</div>
+            </div>
+            <div class="conf-card">
+              <div class="conf-card-label">📍 Destination</div>
+              <div class="conf-card-val" id="conf-destination">—</div>
+            </div>
+            <div class="conf-card">
+              <div class="conf-card-label">📅 Dates</div>
+              <div class="conf-card-val" id="conf-dates">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- RIGHT PANEL — Agent Reasoning + Results            -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="main-panel" aria-label="Agent output">
+
+      <!-- Reasoning Panel -->
+      <div class="reasoning-panel-wrap" id="reasoning-wrap">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span aria-hidden="true">🧠</span>
+            Agent Reasoning Log
+          </div>
+          <div class="panel-live-badge" aria-live="polite">
+            <span class="live-dot" aria-hidden="true"></span>
+            Live Trace
+          </div>
+        </div>
+
+        <!-- Reasoning Steps Container -->
+        <div id="reasoning-panel" role="log" aria-label="Agent reasoning steps" aria-live="polite">
+
+          <!-- Empty State -->
+          <div id="empty-state" aria-hidden="false">
+            <span class="empty-icon" aria-hidden="true">🌍</span>
+            <div class="empty-title">Ready to plan your adventure</div>
+            <p class="empty-text">
+              Configure your trip on the left and click <strong>Plan My Trip</strong>. Watch the AI agent reason through every step — from flight lookup to day-by-day itinerary building — live in this panel.
+            </p>
+            <div class="empty-destinations" aria-label="Supported destinations">
+              <span class="dest-pill">🇯🇵 Tokyo</span>
+              <span class="dest-pill">🇫🇷 Paris</span>
+              <span class="dest-pill">🇮🇩 Bali</span>
+              <span class="dest-pill">🇮🇹 Rome</span>
+              <span class="dest-pill">🇦🇪 Dubai</span>
+              <span class="dest-pill">🇪🇸 Barcelona</span>
+              <span class="dest-pill">🇦🇺 Sydney</span>
+              <span class="dest-pill">🇺🇸 New York</span>
+            </div>
+          </div>
+
+        </div><!-- #reasoning-panel -->
+      </div>
+
+      <!-- ─── Budget Summary Section ─────────────────────── -->
+      <section id="budget-section" aria-label="Budget breakdown">
+        <div class="section-header">
+          <h2 class="section-title">💰 Budget Breakdown</h2>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="budget-grid">
+              <div>
+                <div id="budget-bars" aria-label="Budget category bars"></div>
+                <div id="budget-total-row" aria-live="polite"></div>
+              </div>
+              <div id="donut-chart" aria-label="Budget donut chart" role="img"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Warnings / Assumptions / Tips -->
+        <div class="meta-grid" style="margin-top:16px">
+          <div class="meta-card">
+            <div class="meta-title">
+              <span aria-hidden="true">⚠️</span> Warnings
+            </div>
+            <div id="warnings-list" aria-live="polite"></div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-title">
+              <span aria-hidden="true">ℹ️</span> Assumptions
+            </div>
+            <div id="assumptions-list" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="meta-card" style="margin-top:16px">
+          <div class="meta-title">
+            <span aria-hidden="true">💡</span> Destination Tips
+          </div>
+          <div id="tips-list" aria-live="polite"></div>
+        </div>
+
+      </section>
+
+      <!-- ─── Day-by-Day Itinerary ───────────────────────── -->
+      <section id="itinerary-section" aria-label="Day-by-day itinerary">
+        <div class="section-header">
+          <h2 class="section-title">🗓️ Your Itinerary</h2>
+          <button class="export-btn" id="export-btn" aria-label="Export itinerary as JSON">
+            <span aria-hidden="true">⬇️</span> Export JSON
+          </button>
+        </div>
+
+        <!-- Summary Strip -->
+        <div class="summary-strip" role="list" aria-label="Trip summary">
+          <div class="summary-card" role="listitem">
+            <div class="summary-label"><span aria-hidden="true">📍</span> Destination</div>
+            <div class="summary-value" id="summary-destination">—</div>
+          </div>
+          <div class="summary-card" role="listitem">
+            <div class="summary-label"><span aria-hidden="true">📅</span> Dates</div>
+            <div class="summary-value" id="summary-dates">—</div>
+          </div>
+          <div class="summary-card" role="listitem">
+            <div class="summary-label"><span aria-hidden="true">✈️</span> Flights (RT)</div>
+            <div class="summary-value" id="summary-flight">—</div>
+          </div>
+          <div class="summary-card" role="listitem">
+            <div class="summary-label"><span aria-hidden="true">🏨</span> Hotel</div>
+            <div class="summary-value" id="summary-hotel">—</div>
+          </div>
+        </div>
+
+        <!-- Day Cards -->
+        <div id="days-container" role="list" aria-label="Itinerary days"></div>
+
+      </section>
+
+    </section><!-- .main-panel -->
+
+  </main><!-- .app-layout -->
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="tools.js?v=6"></script>
+  <script src="app.js?v=2"></script>
+
+  <!-- Fix aria-pressed on pref chips -->
+  <script>
+    document.querySelectorAll('.pref-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const pressed = chip.classList.contains('selected');
+        chip.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
